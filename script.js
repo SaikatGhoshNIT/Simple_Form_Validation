@@ -1,15 +1,16 @@
-const form = document.getElementById("form")
+const frm = document.querySelector("#form")
 const username = document.getElementById("username")
 const password = document.getElementById("password")
 const confirmPassword = document.getElementById("confirm_password")
 const checkbox = document.getElementById("checkbox")
 const btn = document.getElementById("btn")
-const error = document.getElementsByClassName("error-title")
+const errors = document.getElementsByClassName("errors")
+const errorMessages = document.getElementsByClassName("error-title")
 
-form.addEventListener("submit", (e)=>{
+frm.addEventListener("submit", e =>{
     let messages = []
-    e.preventDefault()
-
+    
+    clearErrors()
     if(username.value === "" || username.value == null){
         messages.push("Please Enter a Username")
     }
@@ -25,6 +26,29 @@ form.addEventListener("submit", (e)=>{
     if(checkbox.checked == false){
         messages.push("Please Agree the Terms")
     }
+
+    if(messages.length > 0){
+        e.preventDefault() 
+        showError(messages)
+    }
     console.log(messages);
 })
 
+function clearErrors(){
+    //Loop through all the children of the error-list element and remove them
+    //IMPORTANT : This cannot be done with forEach loop or normal loop since as you remove children it will modify the list you are looping  over which will not work.
+    //I recommend using a while loop to accomplish this task
+    //This is the trickiest part of the exercise so if you get stuck and are unable to progress you can also set the innerHTML property of the error-list to an empty string and that will also clear the children. Recommend process to do it through while loop.
+    //Also, make sure you remove the show class to the errors container
+}
+function showError(messages){
+    //Add each error to the error-list element
+    //Make sure to use an li as the element for each error
+    //Also, make sure you add the show class to the errors container
+    messages.forEach(msg => {
+        const li = document.createElement("li")
+        li.innerText = msg
+        errorMessages.appendChild(li)
+    });
+    errors.classList.add("show")
+}
