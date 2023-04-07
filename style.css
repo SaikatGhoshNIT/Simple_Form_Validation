@@ -1,0 +1,42 @@
+*, *::after, *::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    margin-top: 20vh;
+}
+form{
+    width: 400px;
+    height: calc(width*0.5);
+    border: 2px solid yellowgreen;
+    padding: 20px 0px 20px 0px;
+    background-image: linear-gradient(to bottom left, orange, yellow);
+    border-radius: 10px;
+}
+
+.inline{
+    display: block;
+}
+
+#username,#password,#confirm_password{
+    width: 100%;
+    height: 30px;
+}
+#btn{
+    padding: 10px;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom right, red,yellow);
+    cursor: pointer;
+    color: azure;
+    font-weight: 600;
+    width: 100%;
+}
+.form-group{
+    padding: 20px;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+}
