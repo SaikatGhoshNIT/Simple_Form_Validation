@@ -4,8 +4,8 @@ const password = document.getElementById("password")
 const confirmPassword = document.getElementById("confirm_password")
 const checkbox = document.getElementById("checkbox")
 const btn = document.getElementById("btn")
-const errors = document.getElementsByClassName("errors")
-const errorMessages = document.getElementsByClassName("error-title")
+const errors = document.querySelector(".errors")
+const errorList = document.querySelector(".error-title")
 
 frm.addEventListener("submit", e =>{
     let messages = []
@@ -35,11 +35,15 @@ frm.addEventListener("submit", e =>{
 })
 
 function clearErrors(){
-    //Loop through all the children of the error-list element and remove them
+    errorList.innerHTML="" //esaiest way.
+
+    // while(errorList.children[0] != null){
+    //     errorList.removeChild(errorList.children[0])
+    // } -- iterative way to remove Child.
+    
     //IMPORTANT : This cannot be done with forEach loop or normal loop since as you remove children it will modify the list you are looping  over which will not work.
-    //I recommend using a while loop to accomplish this task
-    //This is the trickiest part of the exercise so if you get stuck and are unable to progress you can also set the innerHTML property of the error-list to an empty string and that will also clear the children. Recommend process to do it through while loop.
-    //Also, make sure you remove the show class to the errors container
+    errors.classList.remove("show")
+    
 }
 function showError(messages){
     //Add each error to the error-list element
@@ -48,7 +52,7 @@ function showError(messages){
     messages.forEach(msg => {
         const li = document.createElement("li")
         li.innerText = msg
-        errorMessages.appendChild(li)
+        errorList.appendChild(li)
     });
     errors.classList.add("show")
 }
