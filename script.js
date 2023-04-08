@@ -31,6 +31,7 @@ frm.addEventListener("submit", e =>{
         e.preventDefault() 
         showError(messages)
     }
+    
     console.log(messages);
 })
 
